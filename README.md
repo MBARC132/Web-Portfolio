@@ -1,2 +1,2 @@
 # Web-Portfolio
-Here we will create a personal portfolio which Describes About Our Skill , Project and Internships
+Here we will create a portfolio which Describes About Our Skills , Project and Internships
