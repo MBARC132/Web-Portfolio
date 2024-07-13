@@ -1,0 +1,4 @@
+Front End( HTML, CSS, JavaScript)
+Back End JavaScript(Nodejs)
+Database( Sql(MySQL))
+Hosting and Deployement( Apache/ Render) 
