@@ -1,0 +1,179 @@
+/* Reset margin and padding */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    padding: 20px 30px;
+    background-color: #000;
+    font-family: 'ubuntu', sans-serif;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Navbar links styling */
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+/* Navbar list container styling */
+.navB {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar list item styling */
+.navB li {
+    text-align: center;
+    padding: 10px 14px;
+    font-size: 18px;
+}
+
+/* Navbar link hover effect */
+.navB li a:hover {
+    transition: 0.5s ease-in-out;
+    color: crimson;
+}
+
+/* User icon styling */
+.user-icon {
+    color: rgb(90, 4, 4);
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+/* Content styling */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.profile-info {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.profile-info h1 {
+    font-size: 2.5em;
+}
+
+.profile-info p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.profile-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border: 2px solid #333;
+}
+
+/* Skills section styling */
+.skills {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.skills h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skills ul li {
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navB {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navB li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .user-icon {
+        margin: 10px 0;
+        font-size: 28px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-info {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .profile-image img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .skills ul {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-info h1 {
+        font-size: 2em;
+    }
+
+    .profile-info p {
+        font-size: 1em;
+    }
+
+    .skills h2 {
+        font-size: 1.5em;
+    }
+}
