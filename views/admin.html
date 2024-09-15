@@ -1,0 +1,259 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert, Update, Delete Data</title>
+</head>
+<body>
+     
+
+    <hr>
+    <h1>add skill</h1>
+    <form action="/addskill" method="post">
+        <input type="hidden" name="id" value="1">
+        <label for="skill">Skill:</label>
+        <input type="text" id="skill" name="skill"  ><br><br>
+        <label for="skill_desc">skill_desc:</label>
+        <textarea type="textarea" id="skill_desc" name="skill_desc"> </textarea><br><br>
+        <button type="submit">add</button>
+    </form>
+    <h1>add education</h1>
+    <form action="/addedu" method="post">
+        <input type="hidden" name="id" value="1">
+        <label for="education">education:</label>
+        <input type="text" id="edu" name="edu"  ><br><br>
+        <label for="education">education_description:</label>
+        <textarea type="text" id="edu-desc" name="edu_desc"  > </textarea><br><br>
+        <button type="submit">add</button>
+    </form>
+    <h1>add Project</h1>
+    <form action="/addpro" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="1">
+        <label for="Project">Project:</label>
+        <input type="text" id="pro" name="pro"  ><br><br>
+        <label for="">Link</label>
+        <input type="text" name="link"> <br><br>
+        <label for="Project_desc">Project_desc:</label>
+        <textarea type="text" id="pro_desc" name="pro_desc"  ></textarea><br><br>
+        <input type="file" accept="image/*" id="proimage" name="proimage">  <br><br>
+
+        <button type="submit">add</button>
+    </form>
+    <h1>add Internships</h1>
+    <form action="/addintern" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="1">
+        <label for="Internships">Internships:</label>
+        <input type="text" id="intern" name="intern"  ><br><br>
+        <label for="Internships">Internships_des:</label>
+        <textarea type="text" id="intern_desc" name="intern_desc"  ></textarea><br><br>
+        <input type="file" accept="image/*" id="intimage" name="intimage"> <br><br>
+        <button type="submit">add</button>
+    </form>
+    <h1>add Services</h1>
+    <form action="/addserv" method="post">
+        <input type="hidden" name="id" value="1">
+        <label for="Services">Services:</label>
+        <input type="text" id="services" name="services"  ><br><br>
+        <label for="Services">Services_desc:</label>
+        <textarea type="text" id="services_desc" name="services_desc"  ></textarea><br><br>
+        <button type="submit">add</button>
+    </form>
+
+    <table border="1">
+       
+        <th>Name</th>
+        <th>Place</th>
+        <th>Stream</th>
+        <th>Linkedin</th>
+        <th>Github</th>
+        <th>Number</th>
+        <th>Insta ID</th>
+        <th>CV</th>
+        <th>Image</th>
+        <th>Button</th>
+        
+         
+             
+             
+        <tr>
+            <form action="/update" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<%= user.id %>">
+                <td><input type="text" name="name" value="<%= user.name %>"></td>
+                <td><input type="text" name="place" value="<%= user.place %>"></td>
+                <td><input type="text" name="stream" value="<%= user.stream %>"></td>
+                <td><input type="text" name="linkedin" value="<%= user.linkedin %>"></td>
+                <td><input type="text" name="github" value="<%= user.github %>"></td>
+                <td><input type="text" name="number" value="<%= user.number %>"></td>
+                <td><input type="text" name="insta" value="<%= user.insta %>"></td>
+                <td><input type="file" name="cv" accept="application/pdf"></td>
+                <td><input type="file" name="img" accept="image/*"></td>
+                <td><button type="submit">Submit</button></td>
+            </form>
+            
+            
+        </tr> 
+            
+    </table>
+
+<hr>
+    <hr>
+     
+        <table border="1">
+            <th>Id</th>
+            <th>Skill</th>
+            <th>Skill_desc</th>
+            <th>Button</th>
+            
+            <% skilltable.forEach(function(e){ %>
+                 
+                 
+                <tr>
+                    <form action="/update" method="post">
+                   <td> <input type="text" name="skill_id" value="<%= e.skill_id %>"></td>
+                    <td><% e.skill %><input type="text"name="skill" value="<%= e.skill %>"></td>
+                    <td><% e.skill_desc %><input type="text" name="skill_desc" value="<%= e.skill_desc %>" ></td>
+                     
+                    <td><button type="submit">Submit</button></td>
+                    </form>
+                    
+                </tr> 
+                <% })%>
+        </table>
+    
+    <hr>
+     
+        <table border="1">
+            <tr>
+            <th>Id</th>
+            <th>Education</th>
+            <th>Education_desc</th>
+            <th>Button</th>
+            </tr>
+            <% education.forEach(e=>{ %> 
+                <tr>
+                    <form action="/update" method="post">
+                    <td><input type="text" name="edu_id" value="<%=e.edu_id %>" placeholder="<%e.edu_id%>"></td>
+                    <td><input type="text"name="edu" value="<%=e.edu%>"></td>
+                    <td><input type="text" name="edu_desc" value="<%=e.edu_desc%>" ></td>
+                    <td><button type="submit">Submit</button></td>
+                    </form>
+                    
+                </tr> 
+           <% }) %>
+
+
+        </table>
+        <table border="1">
+            <tr>
+            <th>Id</th>
+            <th>Project</th>
+            <th>Link</th>
+            <th>Project_desc</th>
+            <th>image</th>
+            <th>Button</th>
+            </tr>
+            <% protable.forEach(e=>{      %> 
+                
+                <tr>
+                    <form action="/update" method="post"  enctype="multipart/form-data">
+                    <td><input type="text" name="pro_id" value="<%=e.pro_id%>" placeholder="<%e.pro_id%>"><%e.pro_id%></td>
+                    <td><input type="text"name="pro" value="<%=e.pro%>"></td>
+                    <td><input type="text"name="link" value="<%= e.link %>"></td>
+                    <td><input type="text" name="pro_desc" value="<%=e.pro_desc%>" ></td>
+                    <td>
+                        <% if (e.img) { %>
+                          <img src="data:image/jpeg;base64,<%= e.img.toString('base64') %>" alt="image" style="height: 50px;">
+                        <% } else { %>
+                          <span>No image available</span>
+                        <% } %>
+                        <input type="file" name="img" id="img" accept="image/*">
+                      </td>
+                      
+                    <td><button type="submit">Submit</button></td>
+                    </form>
+                    
+                </tr> 
+           <% }) %>
+
+
+        </table>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+            <th>Internships</th>
+            <th>Internships_desc</th>
+            <th>image</th>
+            <th>Button</th>
+            </tr>
+            <% internshiptable.forEach(e=>{
+                %> 
+                
+                <tr>
+                    <form action="/update" method="post"  enctype="multipart/form-data">
+                    <td><input type="text" name="pro_id" value="<%=e.int_id%>" placeholder="<%e.edu_id%>"><%e.edu_id%></td>
+                    <td><input type="text"name="pro" value="<%=e.intern%>"></td>
+                    <td><input type="text" name="pro_desc" value="<%=e.int_desc%>" ></td>
+                    <td>
+                        <% if (e.img) { %>
+                          <img src="data:image/jpeg;base64,<%= e.img.toString('base64') %>" alt="image" style="height: 50px;">
+                        <% } else { %>
+                          <span>No image available</span>
+                        <% } %>
+                        <input type="file" name="img" id="img" accept="image/*">
+                      </td>
+                      
+                    <td><button type="submit">Submit</button></td>
+                    </form>
+                    
+                </tr> 
+           <% }) %>
+
+
+        </table>
+        <table border="1"></table>
+            <tr>
+                <th>Id</th>
+                <th>Services</th>
+                <th>Services_desc</th>
+                <th>Button</th>
+            </tr>
+                <% servtable.forEach(e=>{
+                    %> 
+                    <tr>
+                        <form action="/update" method="post">
+                        <td><input type="text" name="serv_id" value="<%=e.serv_id%>"><%=e.serv_id%></td>
+                        <td><input type="text"name="serv" value="<%=e.serv%>"></td>
+                        <td><input type="text" name="serv_desc" value="<%=e.serv_desc%>" ></td>
+                        <td><button type="submit">Submit</button></td>
+                        </form>
+                        
+                    </tr> 
+               <% }) %>
+    
+    
+            
+        </table>
+        
+    
+    
+    <hr>
+
+    
+    <form action="/delete" method="POST">
+        <h2>Delete Data</h2>
+        <label for="deleteId">Choose Option:</label>
+         <select name="option" id="option">
+            <option value="internshiptable">internshiptable</option>
+            <option value="servtable">servtable</option>
+            <option value="protable">projectable</option>
+            <option value="edutable">education</option>
+            <option value="skilltable">skilltable</option>
+         </select>
+         <label for="idd">enter id</label><input type="number" name="id" id="id">
+
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>

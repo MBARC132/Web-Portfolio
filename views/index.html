@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Portfolio</title>
+    <!-- Include Font Awesome for user icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="" alt="">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p><%= user.stream %></p>
+                <h1 id="user">Hi, I'm <span><%= user.name %></span><br>from <%=user.place%></h1>
+                
+
+            </div>
+        </div>
+    </div>
+    <div id = "about">
+        <div class="conatiner">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="" >
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am at my best when I have to deal with the complicated situations
+                        and bring out the solution. I Aim to work with an organization that
+                        offers challenges, responsibilities and decision-making opportunities,
+                        where I can blend my functional and technical knowledge gained
+                        from experience for continuous growth and better career prospects.
+                        I am dedicated and passionate about the work I do.</p>
+                        <div class="tab-title">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('Education')">Education</p>
+                            <p class="tab-links" onclick="opentab('Internships')">Internships</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <% skilltable.forEach(e => { %>
+                                    <li><span><%= e.skill %>:</span><br> <%= e.skill_desc %></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="Education">
+                            <ul>
+                                <% education.forEach(e => { %>
+                                    <li><span><%= e.edu %>:</span><br> <%= e.edu_desc %></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="Internships">
+                            <ul>
+                                <% internshiptable.forEach(e => { %>
+                                    <li><span><%= e.intern %>:</span><br> <%= e.intern_desc %></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------------Services------------- -->
+     <div id="Services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                 <i class="fas fa-code"></i>
+                 <h2>Web Design</h2>
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quidem veniam accusantium nulla eum, enim quo quod numquam tenetur? Recusandae quibusdam maiores culpa voluptatum aliquam harum veniam, cupiditate iste dolore?</p>
+                 <a href="#">Learn More</a>
+                </div>
+                <div>
+                    <i class="fas fa-crop-alt"></i>
+                    <h2>AI/ML With Python</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quidem veniam accusantium nulla eum, enim quo quod numquam tenetur? Recusandae quibusdam maiores culpa voluptatum aliquam harum veniam, cupiditate iste dolore?</p>
+                    <a href="#">Learn More</a>
+                   
+                </div>
+                <div>
+                    <i class="fas fa-app-store"></i>
+                    <h2>DATA Analysis</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quidem veniam accusantium nulla eum, enim quo quod numquam tenetur? Recusandae quibusdam maiores culpa voluptatum aliquam harum veniam, cupiditate iste dolore?</p>
+                    <a href="#">Learn More</a>
+                   
+                </div>
+                
+
+            </div>
+            
+        </div>
+     </div>
+     <!-- -------------------Portfolio----------------- -->
+      <div id="Portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                
+              <% protable.forEach(e => { %>
+                <div class="work">
+                    <% if (e.img) { %>
+                        <img src="data:image/jpeg;base64,<%= e.img.toString('base64') %>" alt="user" style="height: 300px; width: auto;">
+                    <% } else { %>
+                        <img src="/static/images/work2.jpeg" alt="default" style="height: 300px; width: auto;">
+                    <% } %>
+                    <div class="layer">
+                        <h3><%= e.pro %></h3>
+                        <p><%= e.pro_desc %></p>
+                        <a href="<%= e.link %>"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <% }) %>
+               
+                
+            </div>
+             
+
+        </div>
+      </div>
+
+   <!-- ---------------Contact---    -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fas fa-paper-plane"></i><%= user.email %></p>
+                    <p><i class="fas fa-phone"></i><%= user.number %></p>
+                     
+                    <div class="social-icons">
+                        <a href="mailto:<%= user.email %> "><i class="fas fa-paper-plane"></i></a>
+                         
+                        <a href="<%= user.github %>"><i class="fab fa-github"></i></a>
+                        <a href="<%= user.linkedin %>"><i class="fab fa-linkedin"></i></a>
+                        <a href="<%= user.insta %>"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <a href="/download-cv/<%= user.id %>" class="btn btn-primary">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form action="">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © Created with <i class="fas fa-heart"></i> by Rafiq Khan and Mahesh. Empowering innovation and creativity through collaboration. All rights reserved.</p>
+
+        </div>
+    </div>
+   <script>
+    var tablinks = document.getElementsByClassName("tab-links");
+var tabcontents = document.getElementsByClassName("tab-contents");
+
+function opentab(tabname){
+    for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+}
+for(tabcontent of tabcontents){
+    tabcontent.classList.remove("active-tab");
+}
+event.currentTarget.classList.add("active-link");
+document.getElementById(tabname).classList.add("active-tab");
+}
+   </script>
+</body>
+</html>
