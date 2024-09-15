@@ -30,7 +30,7 @@ connection.query(query, (err, results) => {
         return;
     }
 
-    // Assuming there's at least one user in the database
+    
      
     console.log(results);
 
