@@ -77,12 +77,29 @@
     <!-- ----------------Services------------- -->
      <div id="Services">
         <div class="container">
+            <% if(servtable[0]){ 
+                servtable.forEach(e => { %>
+
+                
+                <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                 <i class="fas fa-code"></i>
+                 <h2>e.serv</h2>
+                 <p>e.serv_desc</p>
+                 <a href="#">Learn More</a>
+                </div>
+                 
+                
+
+            </div>
+          <% }) } %>
             <h1 class="sub-title">My Services</h1>
             <div class="services-list">
                 <div>
                  <i class="fas fa-code"></i>
                  <h2>Web Design</h2>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quidem veniam accusantium nulla eum, enim quo quod numquam tenetur? Recusandae quibusdam maiores culpa voluptatum aliquam harum veniam, cupiditate iste dolore?</p>
+                 <p>Elevate your online presence with custom, responsive web designs tailored to your brand's needs. I create visually stunning, user-friendly websites that ensure a seamless experience across all devices. From modern aesthetics to optimized performance, I focus on delivering impactful designs that engage visitors and drive results for your business.</p>
                  <a href="#">Learn More</a>
                 </div>
                 <div>
