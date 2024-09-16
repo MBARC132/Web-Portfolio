@@ -4,8 +4,10 @@ const { Stream } = require('stream');
 const app = express();
 const port = 3000;
 const mysql = require('mysql2');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const multer = require('multer')
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
@@ -14,6 +16,12 @@ app.engine('html', require('ejs').renderFile);
 
 const storage = multer.memoryStorage();
 const upload = multer({storage:storage})
+app.use(session({
+  secret: 'secret_key',  
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }    
+}));
 
 app.get('/', (req, res) => {
     const queries = {
@@ -84,11 +92,39 @@ connection.connect((err) => {
     console.log('Connected to MySQL server');
 });
 
-app.get('/create',(req,res) => {
-
-res.render('create.html')
+const validUser = {
+  name: 'admin',
+  password: '12345'
+};
+const isAuthenticated = (req, res, next) => {
+  if (req.session.isLoggedIn) {
+    console.log(req.session.isLoggedIn)
+      next();  
+  } else {
+      res.redirect('/login');  
+      console.log(req.session.isLoggedIn)
+  }
+};
+app.get('/login', (req, res) => {
+  res.render('login.html');
 });
-app.get('/admin', (req, res) => {
+app.post('/login', (req, res) => {
+  const { name, password } = req.body;
+  if (name === validUser.name && password === validUser.password) {
+    
+    req.session.isLoggedIn = true;
+    console.log('Login successful:', req.session.isLoggedIn);
+    req.session.user = name;
+      res.redirect('/create');
+  } else {
+      res.send('Invalid name or password. Please <a href="/login">try again</a>.');
+  }
+}); 
+
+app.get('/create',isAuthenticated, (req, res) => {
+  res.render('create.html'); 
+});
+app.get('/admin',isAuthenticated, (req, res) => {
   const queries = {
     user: 'SELECT * FROM users',
     education: 'SELECT * FROM edutable',
