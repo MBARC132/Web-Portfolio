@@ -2,3 +2,29 @@ Front End( HTML, CSS, JavaScript)
 Back End JavaScript(Nodejs)
 Database( Sql(MySQL))
 Hosting and Deployement( Apache/ Render) 
+
+ 
+            <% education.forEach(e=>{
+                %> 
+                <tr>
+                    <form action="/update" method="post">
+                    <td><input type="text" name="edu_id" value="<%e.edu_id%>"></td>
+                    <td><input type="text"name="edu" value="<%e.edu%>"></td>
+                    <td><input type="text" name="edu_desc" value="<%e.edu_desc%>" ></td>
+                    <td><button type="submit"></button></td>
+                    </form>
+                    
+                </tr> 
+           <% }) %>
+<% skilltable.forEach(e=>{
+                %> 
+                <tr>
+                    <form action="/update" method="post">
+                    <td><input type="hidden" name="skill_id" value="<% e.skill_id %>"></td>
+                    <td><input type="text"name="skill" value="<% e.skill %>"></td>
+                    <td><input type="text" name="skill_desc" value="<% e.skill %>" ></td>
+                    <td><button type="submit"></button></td>
+                    </form>
+                    
+                </tr> 
+                <% }) %>

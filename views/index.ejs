@@ -1,0 +1,50 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navB">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Skill</a></li>
+            <li><a href="/about">Projects/Internships</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div class="user-icon">
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="profile-info">
+            <h1 class="typewriter" >Hi.... Welcome To My Profile!.. </h1>
+            <h1 id="user">I am <%= user %> </h1>
+            <h1 id="stream"> I Love <%= stream %> </h1>
+            <p>I am at my best when I have to deal with complicated situations
+                and bring out the solution. I aim to work with an organization that
+                offers challenges, responsibilities, and decision-making opportunities,
+                where I can blend my functional and technical knowledge gained
+                from experience for continuous growth and better career prospects.
+                I am dedicated and passionate about the work I do.</p>
+        </div>
+        <div class="profile-image">
+            <img src="/static/images/pain.jpg" alt="Profile Picture">
+        </div>
+    </div>
+    <div class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Skill 1</li>
+            <li>Skill 2</li>
+            <li>Skill 3</li>
+            <li>Skill 4</li>
+        </ul>
+    </div>
+    <script src="/static/scripts.js"></script>
+</body>
+</html>
