@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Insert, Update, Delete Data</title>
+    
 </head>
 <body>
      
-
+<div style="width: 300px;" >
     <hr>
     <h1>add skill</h1>
     <form action="/addskill" method="post">
@@ -61,7 +63,7 @@
         <button type="submit">add</button>
     </form>
 
-    <table border="1">
+    <table border="1" style="width: 300px; table-layout: auto;" class="table">
        
         <th>Name</th>
         <th>Place</th>
@@ -78,6 +80,9 @@
              
              
         <tr>
+            <% if(user) { %?
+
+            
             <form action="/update" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<%= user.id %>">
                 <td><input type="text" name="name" value="<%= user.name %>"></td>
@@ -92,7 +97,7 @@
                 <td><button type="submit">Submit</button></td>
             </form>
             
-            
+            <% } %>
         </tr> 
             
     </table>
@@ -255,5 +260,6 @@
 
         <button type="submit">Delete</button>
     </form>
+</div>
 </body>
 </html>

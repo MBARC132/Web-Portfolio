@@ -22,9 +22,10 @@
                 </ul>
             </nav>
             <div class="header-text">
+                <% if(user) { %>
                 <p><%= user.stream %></p>
                 <h1 id="user">Hi, I'm <span><%= user.name %></span><br>from <%=user.place%></h1>
-                
+                <% } %>
 
             </div>
         </div>
@@ -138,6 +139,7 @@
             <div class="row">
                 <div class="contact-left">
                     <h1 class="sub-title">Contact Me</h1>
+                    <% if(user) { %> 
                     <p><i class="fas fa-paper-plane"></i><%= user.email %></p>
                     <p><i class="fas fa-phone"></i><%= user.number %></p>
                      
@@ -148,6 +150,7 @@
                         <a href="<%= user.linkedin %>"><i class="fab fa-linkedin"></i></a>
                         <a href="<%= user.insta %>"><i class="fab fa-instagram"></i></a>
                     </div>
+                    <% } %>
                     <a href="/download-cv/<%= user.id %>" class="btn btn-primary">Download CV</a>
                 </div>
                 <div class="contact-right">
