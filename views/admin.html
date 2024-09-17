@@ -169,7 +169,7 @@
                     <td><input type="text" name="pro_desc" value="<%=e.pro_desc%>" ></td>
                     <td>
                         <% if (e.img) { %>
-                          <img src="data:image/jpeg;base64,<%= e.img.toString('base64') %>" alt="image" style="height: 50px;">
+                          <img src="data:image/*;base64,<%= e.img.toString('base64') %>" alt="image" style="height: 50px;">
                         <% } else { %>
                           <span>No image available</span>
                         <% } %>
@@ -186,7 +186,7 @@
         </table>
         <table border="1">
             <tr>
-                <th>Id</th>
+            <th>Id</th>
             <th>Internships</th>
             <th>Internships_desc</th>
             <th>image</th>
@@ -207,7 +207,7 @@
                           <span>No image available</span>
                         <% } %>
                         <input type="file" name="img" id="img" accept="image/*">
-                      </td>
+                    </td>
                       
                     <td><button type="submit">Submit</button></td>
                     </form>
