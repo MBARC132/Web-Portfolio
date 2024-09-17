@@ -176,11 +176,21 @@ app.get('/admin',isAuthenticated, (req, res) => {
 }); 
   
  
-app.post('/create', (req, res) => {
+app.post('/create',upload.fields([
+  { name: 'img', maxCount: 1 },
+  { name: 'cv', maxCount: 1 }
+]),(req, res) => {
+   let img =null, cv = null
+   console.log(req.file)
+   
     const {  name, stream, email,linkedin,github,number,place,insta  } = req.body;
-    const {img , cv} = req.file ? req.file.buffer : null;
+    if (req.file) {
+      img = req.file.buffer;
+      cv = req.file.buffer; 
+  }
+     
     console.log({ name, stream, email,linkedin,github,number,place,insta,img,cv })
-    const insertQuery = 'INSERT INTO users(name, stream, email,linkedin,github,number,place,insta,img,cv) VALUES (?, ?, ?, ?,?,?,?,?)';
+    const insertQuery = 'INSERT INTO users(name, stream, email,linkedin,github,number,place,insta,img,cv) VALUES (?, ?, ?, ?,?,?,?,?,?,?)';
     const values = [name, stream, email,linkedin,github,number,place,insta,img,cv ];
 
      
