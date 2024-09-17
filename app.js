@@ -176,11 +176,21 @@ app.get('/admin',isAuthenticated, (req, res) => {
 }); 
   
  
-app.post('/create', (req, res) => {
+app.post('/create',upload.fields([
+  { name: 'img', maxCount: 1 },
+  { name: 'cv', maxCount: 1 }
+]),(req, res) => {
+   let img =null, cv = null
+   console.log(req.file)
+   
     const {  name, stream, email,linkedin,github,number,place,insta  } = req.body;
-    const {img , cv} = req.file ? req.file.buffer : null;
+    if (req.file) {
+      img = req.file.buffer;
+      cv = req.file.buffer; 
+  }
+     
     console.log({ name, stream, email,linkedin,github,number,place,insta,img,cv })
-    const insertQuery = 'INSERT INTO users(name, stream, email,linkedin,github,number,place,insta,img,cv) VALUES (?, ?, ?, ?,?,?,?,?)';
+    const insertQuery = 'INSERT INTO users(name, stream, email,linkedin,github,number,place,insta,img,cv) VALUES (?, ?, ?, ?,?,?,?,?,?,?)';
     const values = [name, stream, email,linkedin,github,number,place,insta,img,cv ];
 
      
@@ -225,6 +235,7 @@ app.post('/addedu',(req,res)=>{
 app.post('/addpro', upload.single('proimage'), (req, res) => {
   const { pro, pro_desc,link, id } = req.body;
   const proimage = req.file ?  req.file.buffer : null;  
+  console.log( pro, pro_desc,link, id ,proimage)
 
   const insertqry = 'INSERT INTO protable(pro, pro_desc, user_id, img,link) VALUES(?,?,?,?,?)';
   const values = [pro, pro_desc, id, proimage,link];
@@ -301,9 +312,9 @@ app.post('/update', upload.fields([
   } else if (pro_id) {
        
       const { pro, pro_desc,link } = req.body;
-      const img = req.file ? req.file.buffer : null;  
+      const img = req.files && req.files['img'] ? req.files['img'][0].buffer : null; 
       console.log(img,req.file)
-      let query = `UPDATE protable SET pro = ?, pro_desc = ? link = ?`;
+      let query = `UPDATE protable SET pro = ?, pro_desc = ?, link = ?`;
       const params = [pro, pro_desc,link];
       if (img) {
           query += `, img = ?`;
@@ -319,7 +330,7 @@ app.post('/update', upload.fields([
   } else if (int_id) {
       
       const { intern, intern_desc } = req.body;
-      const img = req.file ? req.file.buffer : null;
+      const img = req.files && req.files['img'] ? req.files['img'][0].buffer : null; 
       console.log(req.file)
       let query = `UPDATE internshiptable SET intern = ?, int_desc = ?`;
       const params = [intern, intern_desc];
